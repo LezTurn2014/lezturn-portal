@@ -1,0 +1,12 @@
+<p><a href="/create/">Create an account</a></p>
+
+<b>Login:</b>
+
+{% if error %}<p><i>{{ error }}</i></p>{% endif %}
+
+<form action="/login/" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Save" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-import LezTurn_Account.urls
+from views import mainpage,login
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -7,7 +7,8 @@ import LezTurn_Account.urls
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'',include(LezTurn_Account.urls))
+    url(r'^mainpage/$', mainpage, name='mainpage'),
+    (r'^login/$', login)
     # url(r'^$', 'LezTurn.views.home', name='home'),
     # url(r'^LezTurn/', include('LezTurn.foo.urls')),
 
