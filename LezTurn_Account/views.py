@@ -6,11 +6,11 @@ import django.contrib.auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.core.urlresolvers import reverse
 
 from LezTurn_Account.forms import LoginForm, RegisterForm
+from LezTurn_Core.models import LezUser
 
 def mainpage(request):
     return HttpResponse("Hello World")
@@ -49,7 +49,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            User.objects.create_user(cd['username'],email=cd['email'],password=cd['password'])
+            LezUser.objects.create_user(cd['username'],email=cd['email'],password=cd['password'])
             return HttpResponseRedirect(reverse('mainpage'))
         else:
             f = RegisterForm(auto_id=False)
